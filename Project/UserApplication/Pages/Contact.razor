@@ -1,0 +1,304 @@
+﻿@page "/contact"
+
+<style>
+    hero_area {
+        position: relative;
+    }
+
+    .hero_bg_box .img-box img {
+        width: 100%;
+        height: auto;
+        display: block;
+    }
+
+    .contact_bg_box .img-box img {
+        width: 100%;
+        height: auto;
+        display: block;
+    }
+
+    .hero_area {
+        position: relative;
+        background-image: url('images/hero-bg.jpg');
+        background-size: cover;
+        background-position: center;
+        height: 16vh; /* Adjust height as needed */
+        filter: brightness(0.95); /* Adjust brightness value (0.7 is 70%) */
+    }
+
+    .contact_section {
+        position: relative;
+        background-image: url('images/contact-bg.jpg');
+        background-size: cover;
+        background-position: center;
+        padding: 100px 0; /* Adjust padding as needed */
+        filter: brightness(0.97); /* Adjust brightness value (0.7 is 70%) */
+    }
+
+    
+</style>
+  <!-- bootstrap core css -->
+  <link rel="stylesheet" type="text/css" href="css/bootstrap.css" />
+
+  <!-- fonts style -->
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700|Poppins:400,600,700&display=swap" rel="stylesheet" />
+
+  <!-- Custom styles for this template -->
+  <link href="css/style.css" rel="stylesheet" />
+  <!-- responsive style -->
+  <link href="css/responsive.css" rel="stylesheet" />
+
+
+<body class="sub_page">
+  <div class="hero_area">
+    <!-- header section strats -->
+    <div class="hero_bg_box">
+      <div class="img-box">
+        <img src="images/hero-bg.jpg" alt="">
+      </div>
+    </div>
+
+    <header class="header_section">
+      <div class="header_top">
+        <div class="container-fluid">
+          <div class="contact_link-container">
+                        <a href="" class="contact_link1">
+                            <i class="fa fa-map-marker" aria-hidden="true"></i>
+                            <span>
+                                Muslim Town, Rawalpindi, Pakistan
+                            </span>
+                        </a>
+                        <a href="" class="contact_link2">
+                            <i class="fa fa-phone" aria-hidden="true"></i>
+                            <span>
+                                Call : +92 3005107960
+                            </span>
+                        </a>
+                        <a href="" class="contact_link3">
+                            <i class="fa fa-envelope" aria-hidden="true"></i>
+                            <span>
+                                221375@students.au.edu.pk
+                            </span>
+                        </a>
+          </div>
+        </div>
+      </div>
+      <div class="header_bottom">
+        <div class="container-fluid">
+          <nav class="navbar navbar-expand-lg custom_nav-container">
+            <a class="navbar-brand" href="index.html">
+              <span>
+                                THE BUILDERS
+              </span>
+            </a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+              <span class=""></span>
+            </button>
+
+            <div class="collapse navbar-collapse ml-auto" id="navbarSupportedContent">
+                            <ul class="navbar-nav  ">
+                                <li class="nav-item">
+                                    <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="/about"> About</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="/service"> Services </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="/register"> Register </a>
+                                </li>
+                                <li class="nav-item active">
+                                    <a class="nav-link" href="/contact">Contact us</a>
+                                </li>
+                            </ul>
+            </div>
+          </nav>
+        </div>
+      </div>
+    </header>
+    <!-- end header section -->
+  </div>
+
+  <!-- contact section -->
+
+  <section class="contact_section layout_padding">
+    <div class="contact_bg_box">
+      <div class="img-box">
+        <img src="images/contact-bg.jpg" alt="">
+      </div>
+    </div>
+    <div class="container">
+      <div class="heading_container heading_center">
+        <h2>
+          Get In touch
+        </h2>
+      </div>
+      <div class="">
+        <div class="row">
+          <div class="col-md-7 mx-auto">
+                        <form>
+                            <div class="contact_form-container" @onclick="contact">
+                                <div>
+                                    <div>
+                                        <input type="text" placeholder="Full Name" required @bind="appointment.Name" />
+                                    </div>
+                                    <div>
+                                        <input type="text" placeholder="Business Name" required @bind="appointment.BName" />
+                                    </div>
+                                    <div>
+                                        <input type="email" placeholder="Email " required @bind="appointment.Email" />
+                                    </div>
+                                    <div>
+                                        <input type="text" placeholder="Phone Number (e.g +923000000000)" required pattern="\+[9]{1}[2]{1}[3]{1}[0-9]{9}" @bind="appointment.Phone" />
+                                    </div>
+                                    <div class="">
+                                        <input type="text" placeholder="Message" class="message_input" required @bind="appointment.Message" />
+                                    </div>
+                                    <div class="btn-box ">
+                                        <button type="submit">
+                                            Send
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- end contact section -->
+
+  <!-- info section -->
+    <section class="info_section ">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-3">
+                    <div class="info_logo">
+                        <a class="navbar-brand" href="/">
+                            <span>
+                                THE BUILDERS
+                            </span>
+                        </a>
+                        <p>
+                            Building Your Future, One Tap At a Time.
+                        </p>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="info_links">
+                        <h5>
+                            Useful Link
+                        </h5>
+                        <ul>
+                            <li>
+                                <a href="/">
+                                    Home
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/about">
+                                    About
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/contact">
+                                    Contact Us
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/login">
+                                    Log in
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="info_info">
+                        <h5>
+                            Contact Us
+                        </h5>
+                    </div>
+                    <div class="info_contact">
+                        <a href="" class="">
+                            <i class="fa fa-map-marker" aria-hidden="true"></i>
+                            <span>
+                                Muslim Town, Rawalpindi, Pakistan
+                            </span>
+                        </a>
+                        <a href="" class="">
+                            <i class="fa fa-phone" aria-hidden="true"></i>
+                            <span>
+                                Call : +92 3005107960
+                            </span>
+                        </a>
+                        <a href="" class="">
+                            <i class="fa fa-envelope" aria-hidden="true"></i>
+                            <span>
+                                221375@students.au.edu.pk
+                            </span>
+                        </a>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="info_form ">
+                        <h5>
+                            Newsletter
+                        </h5>
+                        <form @onclick="subscribe">
+                            <input type="email" placeholder="Enter your email" @bind="GlobalVar.Semail">
+                            <button>
+                                Subscribe
+                            </button>
+                        </form>
+                        <div class="social_box">
+                            <a href="">
+                                <i class="fa fa-facebook" aria-hidden="true"></i>
+                            </a>
+                            <a href="">
+                                <i class="fa fa-twitter" aria-hidden="true"></i>
+                            </a>
+                            <a href="">
+                                <i class="fa fa-youtube" aria-hidden="true"></i>
+                            </a>
+                            <a href="">
+                                <i class="fa fa-instagram" aria-hidden="true"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- end info_section -->
+    <!-- footer section -->
+    <footer class="container-fluid footer_section">
+        <p>
+            Copyright &copy; 2024<span id="currentYear"></span>, All Rights Reserved by
+            <a href="/">The Builders</a>
+        </p>
+    </footer>
+
+  <script src="js/jquery-3.4.1.min.js"></script>
+  <script src="js/bootstrap.js"></script>
+  <script src="js/custom.js"></script>
+  </body>
+
+
+  @code{
+    private ContactUs appointment { get; set; } = new ContactUs();
+    public void subscribe()
+    {
+        DalConstruction.AddSubscriber(GlobalVar.Semail);
+    }
+
+    public void contact()
+    {
+        DalConstruction.AddBusiness(appointment);
+    }
+  }

@@ -1,0 +1,215 @@
+﻿@page "/dashboardcustomer"
+@inject NavigationManager Navigation
+@using UserApplication.Pages;
+
+@if (GlobalVar.custemail != null)
+{
+    <head>
+        <!-- Required meta tags -->
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <title>Skydash Admin</title>
+        <!-- plugins:css -->
+        <link rel="stylesheet" href="assets/vendors/feather/feather.css">
+        <link rel="stylesheet" href="assets/vendors/ti-icons/css/themify-icons.css">
+        <link rel="stylesheet" href="assets/vendors/css/vendor.bundle.base.css">
+        <link rel="stylesheet" href="assets/vendors/font-awesome/css/font-awesome.min.css">
+        <link rel="stylesheet" href="assets/vendors/mdi/css/materialdesignicons.min.css">
+        <!-- endinject -->
+        <!-- Plugin css for this page -->
+        <!-- <link rel="stylesheet" href="assets/vendors/datatables.net-bs4/dataTables.bootstrap4.css"> -->
+        <link rel="stylesheet" href="assets/vendors/datatables.net-bs5/dataTables.bootstrap5.css">
+        <link rel="stylesheet" href="assets/vendors/ti-icons/css/themify-icons.css">
+        <link rel="stylesheet" type="text/css" href="assets/js/select.dataTables.min.css">
+        <!-- End plugin css for this page -->
+        <!-- inject:css -->
+        <link rel="stylesheet" href="assets/css/style.css">
+        <!-- endinject -->
+        <link rel="shortcut icon" href="assets/images/favicon.png" />
+    </head>
+    <body>
+
+        <div class="container-fluid page-body-wrapper">
+            <nav class="sidebar sidebar-offcanvas" id="sidebar">
+                <ul class="nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="/dashboardcustomer">
+                            <i class="icon-grid menu-icon"></i>
+                            <span class="menu-title">Dashboard</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" data-bs-toggle="collapse" href="/DashboardCustomer/hire" aria-controls="auth">
+                            <i class="icon-head menu-icon"></i>
+                            <span class="menu-title">Hire Profile</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" data-bs-toggle="collapse" href="/DashboardCustomer/edit" aria-controls="auth">
+                            <i class="icon-head menu-icon"></i>
+                            <span class="menu-title">Edit Profile</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" @onclick="logOut">
+                            <i class="icon-ban menu-icon"></i>
+                            <span class="menu-title">Log Out</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+            <!-- partial -->
+            <div class="main-panel">
+                <div class="content-wrapper">
+                    <div class="row">
+                        <div class="col-md-12 grid-margin">
+                            <div class="row">
+                                <div class="col-12 col-xl-8 mb-4 mb-xl-0">
+                                    <h3 class="font-weight-bold">Welcome @customer.FName @customer.LName</h3>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12 grid-margin transparent">
+                            <div class="row">
+                                <div class="col-md-6 mb-4 stretch-card transparent">
+                                    <div class="card card-tale">
+                                        <div class="card-body">
+                                            <p class="mb-4">Total Orders </p>
+                                            <p class="fs-30 mb-2">@((states?.TotalOrders ?? 0).ToString())</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 mb-4 stretch-card transparent">
+                                    <div class="card card-dark-blue">
+                                        <div class="card-body">
+                                            <p class="mb-4">Completed Orders</p>
+                                            <p class="fs-30 mb-2">@((states?.TotalOrders ?? 0).ToString())</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 mb-4 mb-lg-0 stretch-card transparent">
+                                    <div class="card card-light-blue">
+                                        <div class="card-body">
+                                            <p class="mb-4">Cancelled Orders</p>
+                                            <p class="fs-30 mb-2">0</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 stretch-card transparent">
+                                    <div class="card card-light-danger">
+                                        <div class="card-body">
+                                            <p class="mb-4">Total Spendings</p>
+                                            <p class="fs-30 mb-2">@((decimal.TryParse(states?.TotalSpent, out var totalSpent) ? totalSpent : 0).ToString())</p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-12 grid-margin stretch-card">
+                        <div class="card">
+                            <div class="col-md-12 stretch-card grid-margin">
+                                <div class="card">
+                                    <div class="card-body">
+                                        
+                                        
+                                                @if (history != null)
+                                                {
+                                            <p class="card-title">Brief History</p>
+                                                    <div class="table-responsive">
+                                                        <table class="table table-striped table-borderless">
+                                                            <thead>
+                                                                <tr>
+                                                                    <th>Name</th>
+                                                                    <th>City</th>
+                                                                    <th>Skill</th>
+                                                                    <th>Price</th>
+                                                                </tr>
+                                                            </thead>
+                                                            <tbody>
+                                                                @foreach (var h in history)
+                                                                {
+                                                                    <tr>
+                                                                        <td>@h.FName @h.LName</td>
+                                                                        <td>@h.City</td>
+                                                                        <td>@h.Skill</td>
+                                                                        <td class="font-weight-bold">@h.Price</td>
+                                                                    </tr>
+                                                                }
+                                                            </tbody>
+                                                        </table>
+                                                    </div>
+                                                    
+                                                }
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+
+                <footer class="footer">
+                    <div class="d-sm-flex justify-content-center justify-content-sm-between">
+                        <span class="text-muted text-center text-sm-left d-block d-sm-inline-block">Copyright © 2024. All Rights Reserved. THE BUILDERS </span>
+                        <span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center">Hand-crafted & made with <i class="ti-heart text-danger ms-1"></i></span>
+                    </div>
+                </footer>
+                <!-- partial -->
+            </div>
+            <!-- main-panel ends -->
+        </div>
+
+
+        <script src="assets/vendors/js/vendor.bundle.base.js"></script>
+        <script src="assets/vendors/chart.js/chart.umd.js"></script>
+        <script src="assets/vendors/datatables.net/jquery.dataTables.js"></script>
+        <script src="assets/vendors/datatables.net-bs5/dataTables.bootstrap5.js"></script>
+        <script src="assets/js/dataTables.select.min.js"></script>
+        <script src="assets/js/off-canvas.js"></script>
+        <script src="assets/js/template.js"></script>
+        <script src="assets/js/settings.js"></script>
+        <script src="assets/js/todolist.js"></script>
+        <script src="assets/js/jquery.cookie.js" type="text/javascript"></script>
+        <script src="assets/js/dashboard.js"></script>
+    </body>
+}
+@code {
+    private CustomerReg customer;
+    private LabourerReg labourer;
+    private CustomerStats states;
+    private List<LabourerReg> history;
+    private bool isInitialized;
+
+    protected override void OnInitialized()
+    {
+        customer = DalConstruction.GetCustomerDetailsByEmail(GlobalVar.custemail);
+        labourer = DalConstruction.GetLabourerById(GlobalVar.LabourerId);
+        states = DalConstruction.GetCustomerStatsByEmail(GlobalVar.custemail);
+        history = DalConstruction.GetAssignedWorkHistory(GlobalVar.custemail);
+        isInitialized = true;
+    }
+
+    protected override void OnAfterRender(bool firstRender)
+    {
+        if (firstRender && GlobalVar.custemail == null)
+        {
+            Navigation.NavigateTo("/login");
+        }
+    }
+
+    public async Task logOut()
+    {
+        GlobalVar.custemail = null;
+        Navigation.NavigateTo("/");
+    }
+    
+}
